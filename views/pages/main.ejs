@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dioses</title>
+	<%- include ../partials/head.ejs %>
+</head>
+<%- include ../partials/header.ejs %>
+<body>
+	<br>
+	<div class="wrapper">
+		<div class="container">
+	<%dioses.forEach(function(element){ %>
+		<div class="media border border-light">
+			<div class="media-left mr-sm-3">
+				<img src="<%=element.imagen%>" class="media-object mr-sm-3" style="width: 80px">
+			</div>
+			<div class="media-body ml-sm-2">
+				<h4 class="media-heading"><a href="/dios?dios=<%=element.espanol%>"><%=element.espanol%></a></h4>
+				<span> <%=element.significado%></span>
+			</div>
+		</div>
+		<br>
+	<% }) %>
+	</div>
+	</div>
+</body>
+</html>

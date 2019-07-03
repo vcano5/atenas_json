@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DIOSES</title>
+	<%- include ../partials/head.ejs %>
+</head>
+<body style="background-color: #343a40">
+
+	<div class="container text-center jumbotron bg-dark" id="b">
+		<div id="contenedor-alertas" class="alert alert-danger" style="display: none;" role="alert"></div>
+		<img class="img-fluid" src="https://sfo2.digitaloceanspaces.com/monteathos/zeus.svg" width="50%"> 
+		<h1 class="display-4 text-light">DIOSES GRIEGOS</h1>
+		
+		<!--
+		<div class="input-group input-group-lg vw-100 text-center">
+			<input type="search" name="busqueda" class="w-50" placeholder="Buscar un dios">
+			<button class="btn btn-primary ml-sm-2">a</button>
+		</div>
+		-->
+
+		<br><br><br>
+		<div class="input-group">
+		  <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Buscar un dios" id="inputbusqueda">
+		  <div class="input-group-append">
+		  	<button type="button" class="btn btn-outline-primary ml-1" onclick="buscarPorNombre()"><i class="fa fa-search" onclick=""></i></button>
+		    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    </button>
+			
+
+		    <div class="dropdown-menu">
+		      <button class="dropdown-item" onclick="buscarPorNombre()">Buscar</button>
+		      <button class="dropdown-item" onclick="buscarPorGrupo()">Buscar por grupo</button>
+		      <button class="dropdown-item" onclick="buscarPorEquipo()">Buscar por equipo</button>
+		      <div role="separator" class="dropdown-divider"></div>
+		      <button class="dropdown-item" onclick="location.href = '/dioses'">Todos los dioses</button>
+		    </div>
+		  </div>
+		</div>
+		<br><br>
+
+		<button type="button" class="btn btn-primary mr-sm-1 btn-lg shadow-sm" onclick="location.href = '/formulario'" style="border-radius: 10%"><i class="fa fa-plus" aria-hidden="true"></i> AÑADIR</button>
+		<br>
+		<div class="fixed-bottom"> 
+			<span class="text-light"> Para agregar nuevos dioses por favor consulta el siguiente <a href="https://help.github.com/en/articles/editing-files-in-another-users-repository"> enlace </a></a></span>
+			<br>
+			<br>
+			<span class="text-light"> Archivo de dioses: <a href="https://github.com/vcano5/atenas_json/dioses.json"> dioses.json </a> </span>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	function buscarPorNombre() {
+		location.href = ('/busqueda?n=' + document.getElementById('inputbusqueda').value);
+	}
+
+	function buscarPorGrupo() {
+		var a = parseInt(document.getElementById('inputbusqueda').value);
+		var grupos = [600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 777];
+
+		if(!isNaN(parseFloat(a)) && isFinite(a)) {
+			if(grupos.includes(a)) {
+				location.href = ('/busqueda?g=' + document.getElementById('inputbusqueda').value);
+			}
+			else {
+				alerta('El grupo no existe');
+			}
+		}
+		else {
+			alerta('No es un numero');
+		}
+		
+	}
+
+	function buscarPorEquipo() {
+		var a = parseInt(document.getElementById('inputbusqueda').value);
+		var equipos = [1, 2, 3, 4, 5, 6, 7 , 8, 9, 10];
+		if(!isNaN(parseFloat(a)) && isFinite(a)) {
+			if(equipos.includes(a)) {
+				location.href = ('/busqueda?e=' + document.getElementById('inputbusqueda').value);
+			}
+			else { 
+
+				alerta('El equipo no es valido');
+			}
+		}
+		else {
+			alerta('No es un numero');
+		}
+		
+	}
+
+	function alerta(n) {
+		document.getElementById('contenedor-alertas').innerHTML = n;
+		document.getElementById('contenedor-alertas').style.display = ""
+		setTimeout(function() {
+			document.getElementById('contenedor-alertas').style.display = 'none'
+		}, 3000)
+	}
+</script>
+</html>

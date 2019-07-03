@@ -1,0 +1,50 @@
+<nav class="navbar fixed-top navbar-dark bg-dark" id="bar">
+      <form action="/busqueda" method="GET" id="bsq">
+        <div class="input-group" style="width: 95vw;">
+          <input class="form-control pr-sm-1 w-70" id="inputbusqueda" name="busqueda" type="search" placeholder="Buscar" required>
+
+          <button class="btn btn-primary mx-2 my-sm-0 w-10" onclick="buscar()"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+</nav>
+
+<nav class="navbar fixed-bottom navbar-sm navbar-dark bg-dark form-inline">
+	<a href="/" class="navbar-brand"><img src="https://sfo2.digitaloceanspaces.com/monteathos/zeus.svg" width="30"> DIOSES
+	</a>
+	
+	<button disabled class="btn btn-secondary btn-lg" onclick="location.href = '/formulario'"><i class="fa fa-plus" aria-hidden="true"></i></button>
+	
+	<button class="btn btn-secondary ml-4 w-auto" type="button" onclick="location.href ='/dioses'"><i class="fa fa-id-card" aria-hidden="true"></i></button>
+	<button class="btn btn-secondary ml-4 w-auto" type="button" onclick="location.href ='/animaciones'"><i class="fa fa-bolt"></i></button>
+</nav>
+
+<script type="text/javascript">
+	$('#bsq').submit(function(e) {
+		
+		e.preventDefault();
+		buscar();
+		//return false;
+	})
+
+	function buscar() {
+		var grupos = [600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 777, 000];
+		console.log(document.getElementById('inputbusqueda').value);
+		var equipos = [1, 2, 3, 4, 5, 6, 7 , 8, 9, 10];
+		var a = parseInt(document.getElementById('inputbusqueda').value);
+		if(!isNaN(parseFloat(a)) && isFinite(a)) {
+			if(grupos.includes(a)) {
+				location.href = ('/busqueda?g=' + document.getElementById('inputbusqueda').value);
+			}
+			else if(equipos.includes(a)) {
+				location.href = ('/busqueda?e=' + document.getElementById('inputbusqueda').value);
+			}
+			else {
+				location.href = ('/busqueda?n=' + document.getElementById('inputbusqueda').value);
+			}
+		}
+		else {
+			location.href = ('/busqueda?n=' + document.getElementById('inputbusqueda').value);
+		}
+	}
+
+	</script>

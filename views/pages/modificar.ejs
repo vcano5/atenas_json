@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+
+<header>
+    <% include ../partials/header %>
+</header>
+<body>
+
+  <div class="container">
+    <br><br>
+<form id="form1" name="form1" method="get" action="/putDios">
+  <input type="hidden" name="op" value="mod">
+  <input type="hidden" name="id" value="<%=data.id%>">
+  <table width="95%" border="0">
+    <tr>
+      <td>Dios en Español</td>
+      <input type="text" name="espanolo" value="<%=data.espanol%>" hidden>
+      <td colspan="2"><input type="text" name="espanol" id="espanol" required value="<%=data.espanol%>"/></td>
+    </tr>
+    <tr>
+      <td>Dios en Griego</td>
+      <td colspan="2"><input type="text" name="griego" id="griego" required value="<%=data.griego%>"/></td>
+    </tr>
+    <tr>
+      <td>Transliteración</td>
+      <td colspan="2"><input name="transliteracion" id="transliteracion" value="<%=data.transliteracion%>" required></input></td>
+    </tr>
+      <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+        <tr>
+      <td>Significado</td>
+      <td colspan="2"><textarea name="significado" id="significado" required><%=data.significado%></textarea></td>
+    </tr>
+    <tr>
+      <td>Imagen</td>
+      <td><input type="url" name="imagen" id="imagen" placeholder="https://" value="<%=imagen%>"> </td>
+        
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GRUPO</td>
+      <td colspan="2"><p>
+        <select name="grupo" id="grupo">
+          <option value="600">600</option>
+          <option value="601">601</option>
+          <option value="602">602</option>
+          <option value="603">603</option>
+          <option value="604">604</option>
+          <option value="605">605</option>
+          <option value="606">606</option>
+          <option value="607">607</option>
+          <option value="608">608</option>
+          <option value="609">609</option>
+        </select>
+      </p>        </td>
+    </tr>
+    <tr>
+      <td>EQUIPO</td>
+      <td colspan="2"><select name="equipo" id="equipo" value="<%=data.equipo%>">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>      </td>
+    </tr>
+        <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Aspecto historico</td>
+      <td colspan="2"><textarea name="aspectohistorico" id="aspectohistorico" required><%=data.aspectohistorico%></textarea></td>
+    </tr>
+    <tr>
+      <td>Aspecto Estructural</td>
+      <td colspan="2"><textarea name="aspectoestructural" id="aspectoestructural" required><%=data.aspectoestructural%></textarea></td>
+    </tr>
+    <tr>
+      <td>Aspecto evolutivo</td>
+      <td colspan="2"><textarea name="aspectoevolutivo" id="aspectoevolutivo" required><%=data.aspectoevolutivo%></textarea></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2"><div align="center">
+        <button type="reset" class="btn btn-danger">
+          <i class="fa fa-eraser"></i> Restablecer
+        </button>
+        <!--<input class="btn btn-danger" type="reset" name="button" id="button" value="Restablecer" /> -->
+        
+
+
+        <!--<button type="submit" class="btn btn-primary">
+          <i class="fa fa-paper-plane"></i> Enviar
+        </button>
+        --->
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Enviar
+        </button>
+
+        <!--<i class="fa fa-paper-plane" aria-hidden="true"></i><input class="btn btn-primary" type="submit" name="button2" id="button2" value="Enviar">   -->
+      </div></td>
+    </tr>
+  </table>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Codigo de modificacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" minlength="4" name="recuperacion" style="text-transform: uppercase;" maxlength="4" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+    document.getElementById("grupo").value = "<%=data.grupo%>";
+    document.getElementById("equipo").value = "<%=data.equipo%>";
+</script>
+</body>
+</html>

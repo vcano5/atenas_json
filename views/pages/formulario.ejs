@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+
+<header>
+    <% include ../partials/header %>
+</header>
+<body>
+
+  <div class="container">
+    <br><br>
+<form id="form1" name="form1" method="get" action="/postDios">
+  <table width="95%" border="0">
+    <tr>
+      <td>Dios en Español</td>
+      <td colspan="2"><input type="text" name="espanol" id="espanol" required /></td>
+    </tr>
+    <tr>
+      <td>Dios en Griego</td>
+      <td colspan="2"><input type="text" name="griego" id="griego" required/></td>
+    </tr>
+    <tr>
+      <td>Transliteración</td>
+      <td colspan="2"><input name="transliteracion" id="transliteracion" required></input></td>
+    </tr>
+      <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+        <tr>
+      <td>Significado</td>
+      <td colspan="2"><textarea name="significado" id="significado" required></textarea></td>
+    </tr>
+    <tr>
+      <td>Imagen</td>
+      <td><input type="url" name="imagen" id="imagen" placeholder="https://"> </td>
+        
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>GRUPO</td>
+      <td colspan="2"><p>
+        <select name="grupo" id="grupo">
+          <option value="600">600</option>
+          <option value="601">601</option>
+          <option value="602">602</option>
+          <option value="603" selected="selected">603</option>
+          <option value="604">604</option>
+          <option value="605">605</option>
+          <option value="606">606</option>
+          <option value="607">607</option>
+          <option value="608">608</option>
+          <option value="609">609</option>
+        </select>
+      </p>        </td>
+    </tr>
+    <tr>
+      <td>EQUIPO</td>
+      <td colspan="2"><select name="equipo" id="equipo">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>      </td>
+    </tr>
+        <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Aspecto historico</td>
+      <td colspan="2"><textarea name="aspectohistorico" id="aspectohistorico" required></textarea></td>
+    </tr>
+    <tr>
+      <td>Aspecto Estructural</td>
+      <td colspan="2"><textarea name="aspectoestructural" id="aspectoestructural" required></textarea></td>
+    </tr>
+    <tr>
+      <td>Aspecto evolutivo</td>
+      <td colspan="2"><textarea name="aspectoevolutivo" id="aspectoevolutivo" required></textarea></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="right">
+        <span><b>CODIGO:</b> <%=id%></span>
+      </td>
+      <td align="left">
+        <span class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Utiliza este codigo para borrar o editar esta pagina"></span></td>
+    </tr>
+    <input type="hidden" name="recuperacion" value="<%=id%>">
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2"><div align="center">
+        <button type="reset" class="btn btn-danger">
+          <i class="fa fa-eraser"></i> Restablecer
+        </button>
+        <!--<input class="btn btn-danger" type="reset" name="button" id="button" value="Restablecer" /> -->
+        
+
+
+        <!--<button type="submit" class="btn btn-primary">
+          <i class="fa fa-paper-plane"></i> Enviar
+        </button>
+        --->
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Enviar
+        </button>
+
+        <!--<i class="fa fa-paper-plane" aria-hidden="true"></i><input class="btn btn-primary" type="submit" name="button2" id="button2" value="Enviar">   -->
+      </div></td>
+    </tr>
+  </table>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Codigo de modificacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+         <span class="fa fa-question-circle" data-toggle="tooltip" data-placement="bottom" title="Guarda este codigo para modificar la informacion."> <%=id%></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+<script>
+   $(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+   })
+</script>
+
+
+
+</body>
+</html>
